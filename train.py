@@ -92,7 +92,7 @@ def main():
     )
 
     logger = TensorBoardLogger('log', name='%s_%s_%s' % (args.dataset, args.task, args.model))
-    trainer = Trainer.from_argparse_args(args, max_epochs=args.epochs, gpus=[8], callbacks=checkpoint_callback, logger=logger)
+    trainer = Trainer.from_argparse_args(args, max_epochs=args.epochs, gpus=[0], callbacks=checkpoint_callback, logger=logger)
     trainer.fit(model)
 
 

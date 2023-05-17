@@ -4,6 +4,7 @@ import cv2
 import numpy as np
 import nibabel as nib
 from glob import glob
+import copy
 from multiprocessing.dummy import Pool
 
 
@@ -27,6 +28,12 @@ def main():
 
     if args.dataset == 'kits':
         paths = glob(os.path.join(args.in_path, "case_*/imaging*.nii.gz"))
+        new_paths = []
+        for path in paths:
+            path_num = int(path.split('/')[-2][-3:])
+            if path_num <= 209:
+                new_paths.append(path)
+        paths = copy.deepcopy(new_paths)
     elif args.dataset == 'lits':
         paths = glob(os.path.join(args.in_path, "volume-*.nii"))
 

@@ -4,3 +4,4 @@ log/
 log_dir/
 data/
 pre_train/
+*.pyc
